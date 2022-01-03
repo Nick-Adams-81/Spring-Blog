@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PostController {
 
     @GetMapping("/posts")
-    @ResponseBody
-    public String postsIndex() {
-        return "all the posts here soon";
+    public String posts() {
+        return "posts/show";
     }
 
     @GetMapping("/posts/{id}")
     @ResponseBody
     public String postById(@PathVariable int id) {
-        return "Getting posts by id herre";
+        return "Getting posts by id here";
     }
 
     @GetMapping("/posts/create")
@@ -32,4 +31,12 @@ public class PostController {
     public String createNewPost() {
         return "New posts go through here";
     }
+
+    @GetMapping("post")
+    public String post() {
+        return "posts/index";
+    }
+
+
+
 }
