@@ -5,9 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<nav th:replace="navbar"/>
-<p>Profile page!!!</p>
-<h2>Profile page for: <span th:text="${username}"></span></h2>
-<footer th:replace="footer"/>
+<div th:fragment="footer">
+    <p>Some Random stuff here for a footer</p>
+</div>
 </body>
 </html>
