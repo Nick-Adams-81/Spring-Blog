@@ -1,6 +1,7 @@
 package com.codeup.springblog.Controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,8 +10,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class PostController {
 
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
+    }
+
+
     @GetMapping("/posts")
-    public String posts() {
+    public String posts(Model model) {
+        model.addAttribute("post", postDao.findAll());
         return "posts/show";
     }
 

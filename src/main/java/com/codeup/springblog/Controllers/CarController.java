@@ -15,8 +15,11 @@ public class CarController {
     @GetMapping("/cars")
     public String carIndex(Model model) {
            model.addAttribute("cars", carDao.findAll());
+           model.addAttribute("ford", carDao.findByMake("ford"));
+           model.addAttribute("tesla", carDao.findByModel("cybertruck"));
        return "cars";
     }
+
 
 
 }
