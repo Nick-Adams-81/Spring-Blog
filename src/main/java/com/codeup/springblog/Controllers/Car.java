@@ -25,4 +25,16 @@ public class Car {
     public long getId() {
         return id;
     }
+
+    public String getMake() {
+        return this.make;
+    }
+
+    public String getModel() {
+        return this.model;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
 }
