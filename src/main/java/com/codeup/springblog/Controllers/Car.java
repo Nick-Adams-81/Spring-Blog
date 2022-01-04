@@ -9,6 +9,15 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false, length = 100)
+    private String make;
+
+    @Column(nullable = false, length = 100)
+    private String model;
+
+    @Column(nullable = false)
+    private String description;
+
     public void setId(long id) {
         this.id = id;
     }
