@@ -9,13 +9,17 @@
 
 
 <div th:each="post: ${post}">
-    <p th:text="${post.getBody()}" />
-
-    <p th:text="${post.getTitle()}" />
+    <form th:action="@{|/posts/${post.id}|}" th:method="post">
+        <p th:text="${post.getBody()}"/>
+        <p th:text="${post.getTitle()}"/>
+        <button>Delete</button>
+    </form>
 </div>
 
-<form method="post" action="show">
+
+<form method="post" action="posts/create">
     <input type="text" name="post" id="post" class="field"/>
+    <input type="text" name="post" id="post2" class="field"/>
     <button>submit</button>
 </form>
 

@@ -20,29 +20,25 @@ public class PostController {
         return "posts/show";
     }
 
-    @PostMapping("/posts")
-    public String addPost(@RequestParam(name = "post") String post, Model model) {
-
+    @PostMapping("/posts/{id}")
+    public String deletePost(@PathVariable Long id) {
+        postDao.deleteById(id);
         return "posts/show";
     }
 
-    @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String postById(@PathVariable int id) {
-        return "Getting posts by id here";
+
+    @PostMapping("/posts/create")
+    public String createPost(@ModelAttribute Post post) {
+        postDao.save(post);
+        return "posts/show";
     }
 
-    @GetMapping("/posts/create")
-    @ResponseBody
-    public String viewPosts() {
-        return "Viewing posts here";
-    }
+//    @GetMapping("/posts/create")
+//    @ResponseBody
+//    public String viewPosts() {
+//        return "Viewing posts here";
+//    }
 
-    @PostMapping("posts/create")
-    @ResponseBody
-    public String createNewPost() {
-        return "New posts go through here";
-    }
 
     @GetMapping("post")
     public String post() {
