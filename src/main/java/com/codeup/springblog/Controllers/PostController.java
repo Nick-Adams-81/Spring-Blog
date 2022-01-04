@@ -2,10 +2,7 @@ package com.codeup.springblog.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
@@ -20,6 +17,12 @@ public class PostController {
     @GetMapping("/posts")
     public String posts(Model model) {
         model.addAttribute("post", postDao.findAll());
+        return "posts/show";
+    }
+
+    @PostMapping("/posts")
+    public String addPost(@RequestParam(name = "post") String post, Model model) {
+
         return "posts/show";
     }
 
@@ -45,7 +48,6 @@ public class PostController {
     public String post() {
         return "posts/index";
     }
-
 
 
 }

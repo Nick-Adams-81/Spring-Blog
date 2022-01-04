@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.persistence.*;
+
 @Controller
 public class MathController {
 
@@ -35,5 +37,33 @@ public class MathController {
     }
 
 
+    @Entity
+    @Table(name = "post")
+    public static class Post {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
 
+        @Column(nullable = false, length = 50)
+        private String title;
+
+        @Column(nullable = false, length = 50)
+        private String body;
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getBody() {
+            return body;
+        }
+
+        public void setBody(String body) {
+            this.body = body;
+        }
+    }
 }
