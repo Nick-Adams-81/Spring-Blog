@@ -23,7 +23,7 @@ public class PostController {
     @PostMapping("/posts/{id}")
     public String deletePost(@PathVariable Long id) {
         postDao.deleteById(id);
-        return "posts/show";
+        return "redirect:/posts";
     }
 
 
@@ -32,18 +32,19 @@ public class PostController {
         postDao.save(post);
         return "posts/show";
     }
-
-//    @GetMapping("/posts/create")
-//    @ResponseBody
-//    public String viewPosts() {
-//        return "Viewing posts here";
+//
+//    @GetMapping("post/{id}")
+//    public String updatePost(Model model, @PathVariable Long id) {
+//        Post post = postDao.getById(id);
+//        model.addAttribute("posts", post);
+//        return "posts/show";
 //    }
 
+//    @PostMapping("posts/{id}")
+//    public String editPost(@PathVariable("id") Long id, @ModelAttribute Post post) {
+//        postDao.save(post);
+//        return "posts/show";
+//    }
 
-    @GetMapping("post")
-    public String post() {
-        return "posts/index";
-    }
-
-
+//
 }
