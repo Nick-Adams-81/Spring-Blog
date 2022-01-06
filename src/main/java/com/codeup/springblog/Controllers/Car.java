@@ -18,7 +18,7 @@ public class Car {
     @Column(nullable = false)
     private String description;
 
-    @OneToOne
+    @ManyToOne
     private Owner carOwner;
 
     public void setId(long id) {

@@ -2,6 +2,7 @@ package com.codeup.springblog.Controllers;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="owners")
@@ -15,8 +16,8 @@ public class Owner {
     private String name;
 
 
-    @OneToOne
-    private Car vehicle;
+    @OneToMany
+    private List<Car> vehicle;
 
     public long getId() {
         return id;
