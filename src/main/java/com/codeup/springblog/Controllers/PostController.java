@@ -8,17 +8,19 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     private final PostRepository postDao;
+    private final UserRepository userDao;
 
     // setting up the post controller
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
-
 
     // getting the show post page
     @GetMapping("/posts")
     public String posts(Model model) {
         model.addAttribute("post", postDao.findAll());
+        model.addAttribute("user", userDao.findAll());
         return "posts/show";
     }
 
@@ -44,9 +46,6 @@ public class PostController {
         Post postToEdit = postDao.getById(id);
         postToEdit.setBody(postBody);
         postToEdit.setTitle(postTitle);
-
-        System.out.println(postToEdit.getBody());
-        System.out.println(postToEdit.getTitle());
 
         postDao.save(postToEdit);
         return "redirect:/posts";
