@@ -30,3 +30,7 @@ VALUES (1, 4),
        (2, 2),
        (3, 1),
        (4, 3);
+
+INSERT INTO users(email, password, username)
+VALUES ('test@test.com', 'password', 'test user'),
+       ('test2@test.com', 'password2', 'test user 2');

@@ -1,6 +1,5 @@
 package com.codeup.springblog.Controllers;
 
-
 import javax.persistence.*;
 import java.util.List;
 

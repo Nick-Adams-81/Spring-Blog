@@ -15,6 +15,9 @@ public class Post {
     @Column(nullable = false, length = 100)
     private String title;
 
+    @ManyToOne
+    private Users owner;
+
     public void setId(long id) {
         this.id = id;
     }
