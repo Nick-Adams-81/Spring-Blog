@@ -16,7 +16,8 @@ public class Owner {
     private String name;
 
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name="vehicles_owner", joinColumns = {@JoinColumn(name="owner_id")}, inverseJoinColumns = {@JoinColumn(name="car_id")})
     private List<Car> vehicle;
 
     public long getId() {
