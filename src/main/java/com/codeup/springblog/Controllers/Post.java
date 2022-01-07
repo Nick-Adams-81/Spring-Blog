@@ -1,5 +1,7 @@
 package com.codeup.springblog.Controllers;
 
+import org.apache.catalina.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +18,8 @@ public class Post {
     private String title;
 
     @ManyToOne
-    private Users owner;
+    @JoinColumn(name = "owner_id")
+    private Users user;
 
     public void setId(long id) {
         this.id = id;
@@ -42,4 +45,11 @@ public class Post {
         this.title = title;
     }
 
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
 }

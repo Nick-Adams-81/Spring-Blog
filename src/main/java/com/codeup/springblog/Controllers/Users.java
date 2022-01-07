@@ -20,8 +20,8 @@ public class Users {
     @Column
     private String password;
 
-    @OneToMany
-    private List<Post> post;
+    @OneToMany(mappedBy = "user")
+    private List<Post> userPost;
 
     public long getId() {
         return id;
@@ -54,4 +54,13 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Post> getUserPosts() {
+        return userPost;
+    }
+
+    public void setUserPosts(List<Post> userPosts) {
+        this.userPost = userPosts;
+    }
+
 }

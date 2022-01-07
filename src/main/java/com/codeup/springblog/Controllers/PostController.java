@@ -47,4 +47,20 @@ public class PostController {
         return "redirect:/posts";
     }
 
+    @GetMapping("/posts/create")
+    public String viewCreatePost(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
+    }
+
+    @PostMapping("/post/create")
+    public String create(@ModelAttribute Post post) {
+        post.setUser(userDao.getById(1L));
+        postDao.save(post);
+
+        return "redirect:/posts";
+    }
+
+
+
 }
