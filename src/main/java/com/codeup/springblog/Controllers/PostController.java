@@ -43,7 +43,6 @@ public class PostController {
         Post postToEdit = postDao.getById(id);
         postToEdit.setBody(postBody);
         postToEdit.setTitle(postTitle);
-
         postDao.save(postToEdit);
         return "redirect:/posts";
     }
