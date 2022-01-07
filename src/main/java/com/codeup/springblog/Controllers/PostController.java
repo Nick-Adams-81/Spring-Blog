@@ -50,14 +50,13 @@ public class PostController {
     @GetMapping("/posts/create")
     public String viewCreatePost(Model model) {
         model.addAttribute("post", new Post());
-        return "posts/create";
+        return "/posts/create";
     }
 
-    @PostMapping("/post/create")
+    @PostMapping("/posts/create")
     public String create(@ModelAttribute Post post) {
         post.setUser(userDao.getById(1L));
         postDao.save(post);
-
         return "redirect:/posts";
     }
 
