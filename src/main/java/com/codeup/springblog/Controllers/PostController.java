@@ -1,5 +1,6 @@
 package com.codeup.springblog.Controllers;
 
+import com.codeup.springblog.Controllers.servicies.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,11 +10,13 @@ public class PostController {
 
     private final PostRepository postDao;
     private final UserRepository userDao;
+    private final EmailService emailService;
 
     // setting up the post controller
-    public PostController(PostRepository postDao, UserRepository userDao) {
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
     // getting the show post page
@@ -56,6 +59,7 @@ public class PostController {
     @PostMapping("/posts/create")
     public String create(@ModelAttribute Post post) {
         post.setUser(userDao.getById(1L));
+        emailService.prepareAndSend(post, "Your post has been created", "Your latest blog post is up and ready to view!");
         postDao.save(post);
         return "redirect:/posts";
     }
