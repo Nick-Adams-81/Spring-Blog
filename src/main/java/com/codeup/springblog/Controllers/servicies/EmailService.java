@@ -14,7 +14,7 @@ public class EmailService {
     @Autowired
     public JavaMailSender emailSender;
 
-    @Value("${spring.mail.form}")
+    @Value("${spring.mail.from}")
     private String from;
 
     public void prepareAndSend(Post post, String title, String body) {
